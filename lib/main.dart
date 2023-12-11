@@ -5,12 +5,17 @@ final integerProvider = StateProvider.autoDispose<int>((ref) {
   return 0;
 });
 
-void main() async {
+final stringProvider = Provider<String>((ref) {
+  throw UnimplementedError();
+});
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   runApp(
-    const ProviderScope(
-      child: MainApp(),
+    ProviderScope(
+      overrides: [stringProvider.overrideWithValue('1')],
+      child: const MainApp(),
     ),
   );
 }

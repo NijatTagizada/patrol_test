@@ -9,8 +9,9 @@ void main() {
     framePolicy: LiveTestWidgetsFlutterBindingFramePolicy.fullyLive,
     ($) async {
       await $.pumpWidgetAndSettle(
-        const ProviderScope(
-          child: MainApp(),
+        ProviderScope(
+          overrides: [stringProvider.overrideWithValue('1')],
+          child: const MainApp(),
         ),
       );
 
