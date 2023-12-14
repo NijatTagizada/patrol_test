@@ -9,6 +9,18 @@ final stringProvider = Provider<String>((ref) {
   throw UnimplementedError();
 });
 
+Future<ProviderScope> mainTest() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final container = ProviderContainer();
+
+  return ProviderScope(
+    parent: container,
+    overrides: [stringProvider.overrideWithValue('1')],
+    child: const MainApp(),
+  );
+}
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -58,6 +70,11 @@ class _PatrolTestPageState extends ConsumerState<PatrolTestPage> {
       body: Center(
         child: Column(
           children: [
+            const SizedBox(height: 20),
+            TextFormField(
+              key: const Key('input'),
+            ),
+            const SizedBox(height: 20),
             TextButton(
               key: const Key('textkey'),
               onPressed: () {
