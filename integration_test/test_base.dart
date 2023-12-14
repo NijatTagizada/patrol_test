@@ -1,7 +1,7 @@
 import 'package:patrol/patrol.dart';
 import 'package:patrol_test/main.dart' as app;
 
-class BaseTesting {
+class TestBase {
   Future<void> fillInput(PatrolIntegrationTester $) async {
     await $.pumpWidgetAndSettle(await app.mainTest());
 

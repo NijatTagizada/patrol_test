@@ -2,20 +2,20 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:patrol/patrol.dart';
 import 'package:patrol_test/main.dart';
 
-import 'base_testing.dart';
+import 'test_base.dart';
 
 main() {
-  late BaseTesting baseTesting;
+  late TestBase testBase;
 
   patrolSetUp(() {
-    baseTesting = BaseTesting();
+    testBase = TestBase();
   });
 
   patrolTest(
     'found hello world test',
     framePolicy: LiveTestWidgetsFlutterBindingFramePolicy.fullyLive,
     ($) async {
-      await baseTesting.fillInput($);
+      await testBase.fillInput($);
 
       await $(PatrolTestPage).waitUntilVisible();
 
